@@ -7,13 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="RAÍZ">
-<meta name="description" content="RAÍZ — un juego de palabras en español con validación morfológica, cinco aciertos y clasificación de palabras largas.">
-<title>RAÍZ · El reto de las palabras</title>
+<meta name="description" content="RAÍZ — juego de palabras en español con raíces dinámicas, puntuación de 0 a 100 y validación morfológica.">
+<title>RAÍZ · Juego de palabras — versión 3</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color-scheme:dark;--bg:#10191b;--panel:#192629;--panel2:#203034;--txt:#f3f6f2;--muted:#a7bdb8;--line:#35494b;--green:#59dca5;--deep:#0b533c;--gold:#f4d177;--red:#ff9b94}
 *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;color:var(--txt);background:radial-gradient(ellipse 90% 400px at 50% -130px,#245a49 0%,transparent 100%),var(--bg);min-height:100svh}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.52}a{color:var(--green)}.shell{max-width:1020px;margin:auto;padding:24px 18px 45px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0 22px}.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:25px;letter-spacing:-1px}.brand-symbol{background:var(--green);border-radius:11px;width:34px;height:34px;color:#123026;font-size:23px;display:grid;place-items:center;font-weight:1000}.smalltop{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.6px;font-weight:800}.btn-quiet{border:1px solid var(--line);color:var(--txt);background:transparent;border-radius:11px;padding:10px 12px;font-size:13px;font-weight:700;min-height:40px}.btn-quiet:hover:not(:disabled){background:#263638}.page-heading{margin:8px 0 23px}.kicker{color:var(--green);text-transform:uppercase;letter-spacing:2.6px;font-size:11px;font-weight:800}.page-heading h1{font-size:clamp(29px,5vw,40px);line-height:1.1;letter-spacing:-1.5px;margin:9px 0}.subtitle{color:var(--muted);font-size:14px;margin:0;line-height:1.55}.columns{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,1fr);gap:16px}.card{background:rgba(25,38,41,.97);border:1px solid var(--line);border-radius:19px;box-shadow:0 10px 28px #00000013}.main{padding:25px}.eyebrow{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase}.badge{border:1px solid #3c6455;border-radius:20px;background:#1c392f;color:#9ef0c7;padding:5px 9px;letter-spacing:.2px;text-transform:none;font-size:11px}.tiles{display:flex;gap:9px;justify-content:center;margin:28px 0 20px}.root-tile{display:grid;place-items:center;position:relative;width:min(22vw,78px);height:min(22vw,78px);max-width:78px;max-height:78px;border:1px solid #85e9b8;border-bottom:4px solid #31936c;color:#0a3425;background:linear-gradient(145deg,#a0f6cd,#53d9a1);border-radius:13px;box-shadow:0 9px 28px #2b936039;font-weight:950;font-size:38px}.help-line{text-align:center;color:var(--muted);font-size:13px;margin:0 0 25px}.progress-line{display:flex;gap:7px;align-items:center;justify-content:space-between;margin-bottom:12px;color:#b7cbc5;font-size:12px}.progress-line strong{color:var(--txt)}.progress-pips{display:flex;gap:6px}.pip{width:22px;height:6px;border-radius:20px;background:#374847}.pip.on{background:var(--green)}.input-wrap{display:flex;gap:8px}.word-input{min-width:0;width:100%;padding:16px 15px;color:#fff;background:#0f1a1c;border:1px solid #526866;border-radius:13px;outline:none;line-height:1.2;font-size:17px;font-weight:600;letter-spacing:.2px}.word-input:focus{border-color:var(--green);box-shadow:0 0 0 3px #61d9a31c}.word-input::placeholder{color:#819892;font-weight:400}.send{border:0;background:var(--green);color:#09281c;border-radius:13px;padding:0 17px;font-weight:900;min-height:53px}.send:hover:not(:disabled){background:#82f3c0}.feedback{min-height:42px;padding-top:13px;font-size:13px;color:var(--muted);line-height:1.5}.feedback.err{color:var(--red)}.feedback.ok{color:#9df0c9}.separator{border:0;border-top:1px solid var(--line);margin:13px 0 16px}.entries-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 11px}.section-title{font-size:13px;font-weight:800;letter-spacing:.1px}.entry-list{display:flex;flex-direction:column;gap:9px;min-height:95px}.entry{border:1px solid #344c47;background:#152325;border-radius:10px;padding:11px 12px}.entry-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:7px}.entry-title strong{font-size:14px;overflow-wrap:anywhere}.entry-title span{color:var(--green);font-size:12px;font-weight:800;white-space:nowrap}.char-track{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin;padding-bottom:1px}.letter{min-width:22px;width:22px;height:26px;display:grid;place-items:center;border-radius:4px;background:#2f3d3d;color:#d4e4dd;font-size:12px;font-weight:850}.letter.green{background:#2d8c6a;color:white}.letter.yellow{background:#866c2f;color:#fff2bd}.empty{padding:23px 12px;border:1px dashed #3a5250;border-radius:12px;text-align:center;color:#829a95;font-size:13px}.bottom-opts{display:flex;gap:10px;margin-top:18px}.bottom-opts button{flex:1}.side{display:flex;flex-direction:column;gap:16px}.side .card{padding:21px}.side-head{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:0 0 13px}.side-head h2{margin:0;font-size:16px;letter-spacing:-.2px}.muted{color:var(--muted)}.status{display:flex;align-items:flex-start;gap:10px;border:1px solid #3d5551;background:#1b302e;border-radius:11px;padding:12px;margin:12px 0;color:#cbe4d7;font-size:12px;line-height:1.5}.status.fail{border-color:#8a4946;background:#372324;color:#ffd4c9}.spin{display:block;width:15px;height:15px;border-radius:50%;border:2px solid #547c6c;border-top-color:#b2ffda;animation:spin .8s linear infinite;flex-shrink:0;margin-top:2px}@keyframes spin{to{transform:rotate(360deg)}}.status-check{font-size:17px;color:var(--green);line-height:1}.fine{font-size:12px;color:var(--muted);line-height:1.65;margin:5px 0}.instructions{margin:0;padding-left:20px;color:#c4d6cf;font-size:13px;line-height:1.75}.instructions li{margin:7px 0}.hint-legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:16px;font-size:11px;color:var(--muted)}.dot{display:inline-block;vertical-align:-2px;width:11px;height:11px;border-radius:3px;margin-right:5px;background:#2d8c6a}.dot.yellow{background:#a28740}.scoreboard{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.scorebox{background:#122023;border:1px solid #314743;border-radius:12px;padding:12px}.score-number{font-size:24px;font-weight:900;letter-spacing:-.9px;color:var(--green);margin-bottom:1px}.score-label{font-size:10px;color:var(--muted);line-height:1.3;text-transform:uppercase;letter-spacing:.6px;font-weight:700}.ranking{padding-top:2px}.rank-item{display:grid;grid-template-columns:26px minmax(0,1fr) auto;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #31443f;font-size:13px}.rank-item:last-child{border:0}.rank-num{color:#9bbab0;font-weight:800;font-size:12px}.rank-word{overflow-wrap:anywhere;font-weight:700}.rank-length{font-size:11px;border-radius:99px;background:#28483b;color:#b8f4d5;padding:5px 7px;font-weight:900;white-space:nowrap}.loading-copy{font-size:13px;color:var(--muted);line-height:1.7}.hidden{display:none!important}.big-result{font-weight:900;font-size:27px;line-height:1.2;letter-spacing:-.7px;color:var(--green);margin:4px 0 13px}.result-note{font-size:12px;color:var(--muted);line-height:1.7}.credits{color:#7f9992;font-size:11px;text-align:center;line-height:1.75;max-width:810px;margin:26px auto}.credits a{color:#9bbdb1}.top-mini{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.alert-link{color:var(--green);font-weight:700}.loader-bar{height:5px;background:#284038;border-radius:8px;margin-top:10px;overflow:hidden}.loader-fill{background:var(--green);width:12%;height:100%;border-radius:8px;transition:width .25s}.legend{font-size:11px;color:#b6c7c0}.kbd-hint{font-size:11px;color:#93aca4;margin:0 0 8px;text-align:center}
 @media(max-width:750px){.shell{padding:12px 12px 30px}.top{padding-bottom:15px}.page-heading{margin:4px 0 18px}.page-heading h1{font-size:28px}.columns{grid-template-columns:1fr;gap:12px}.main{padding:19px 16px}.side .card{padding:17px}.tiles{margin:22px 0 15px}.root-tile{width:68px;height:68px;font-size:35px}.side{display:grid;grid-template-columns:1fr}.smalltop{display:none}.bottom-opts{margin-top:15px}.credits{padding:0 6px}.btn-quiet{font-size:12px;padding:10px}.help-line{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.spin{animation:none}}
+.live-card{border:1px solid #355b4e;background:linear-gradient(115deg,#17382e,#162b2c);border-radius:14px;padding:15px;margin:13px 0 9px}.live-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.micro-label{font-size:9px;font-weight:900;letter-spacing:1.2px;color:#a7cbb9}.live-level{font-weight:850;font-size:16px;margin-top:5px;color:#f0f9f2}.live-score{color:var(--green);font-size:30px;font-weight:1000;letter-spacing:-1px;white-space:nowrap}.live-score small,.big-final small{font-size:13px;color:var(--muted);font-weight:600}.mastery-track{height:9px;background:#334844;border-radius:30px;overflow:hidden;margin:12px 0 9px}.mastery-track>div{height:100%;background:linear-gradient(90deg,#45ae83,#6ef0ad);width:0%;border-radius:30px;transition:width .3s}.live-tip{font-size:12px;color:#b6d5c7;margin:0;line-height:1.5}.big-final{font-size:47px;line-height:1.1;font-weight:950;letter-spacing:-2px;color:var(--green)}.big-final small{font-size:17px;letter-spacing:0}.final-level{font-weight:850;font-size:18px;margin:7px 0 9px}.progress-saved{margin-top:13px;padding:11px 12px;background:#112525;border:1px solid #2a5745;border-radius:11px;font-size:12px;color:#bde2d1;line-height:1.7}.progress-saved strong{color:#fff}.scorebox .score-number{font-size:22px}.section-title{margin:9px 0 5px}
 </style>
 </head>
 <body>
@@ -22,12 +23,17 @@
 <div class="page-heading"><span class="kicker">Encuentra la palabra más larga</span><h1>Tres letras. Infinitas posibilidades.</h1><p class="subtitle">Escribe hasta cinco palabras que contengan la misma raíz de tres letras consecutivas.</p></div>
 <div class="columns">
 <main class="card main">
- <div class="eyebrow"><span>Tu raíz de esta ronda</span><span id="roundLabel" class="badge">Ronda de hoy</span></div>
- <div id="tiles" class="tiles" aria-label="Raíz propuesta"><span class="root-tile">A</span><span class="root-tile">Ñ</span><span class="root-tile">O</span></div>
+ <div class="eyebrow"><span>Tu raíz de esta ronda</span><span id="roundLabel" class="badge">Preparando raíz…</span></div>
+ <div id="tiles" class="tiles" aria-label="Raíz propuesta"><span class="root-tile">·</span><span class="root-tile">·</span><span class="root-tile">·</span></div>
  <p class="help-line">La secuencia debe aparecer exactamente en ese orden.</p>
  <div class="progress-line"><strong id="counter">0 de 5 palabras</strong><span id="pips" class="progress-pips" aria-label="Progreso"></span></div>
  <form id="wordForm" autocomplete="off"><div class="input-wrap"><input id="wordInput" class="word-input" type="text" placeholder="Escribe una palabra…" enterkeyhint="done" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Escribe una palabra en español" maxlength="32" disabled><button class="send" id="sendButton" type="submit" disabled>Enviar ↗</button></div></form>
  <div id="feedback" role="status" aria-live="polite" class="feedback">Preparando el diccionario…</div><div id="lookup" class="hidden" style="font-size:12px;margin:-3px 0 12px"><a id="lookupRae" target="_blank" rel="noopener">Comprobar en el DLE</a><span class="muted"> · </span><a id="lookupWr" target="_blank" rel="noopener">Buscar en WordReference</a></div>
+ <section class="live-card" aria-label="Puntuación de la partida">
+  <div class="live-head"><div><span class="micro-label">TU DOMINIO DEL VOCABULARIO</span><div class="live-level" id="liveLevel">Esperando la primera palabra…</div></div><div class="live-score" id="liveScore">0 <small>/ 100</small></div></div>
+  <div class="mastery-track" role="meter" aria-label="Porcentaje de dominio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="masteryTrack"><div id="masteryFill"></div></div>
+  <p class="live-tip" id="masteryTip">Encontrar palabras largas y utilizar letras variadas te dará más puntos.</p>
+ </section>
  <hr class="separator">
  <div class="entries-head"><span class="section-title">Tus palabras</span><span class="legend">Hasta 20 letras cada una</span></div>
  <div class="entry-list" id="entries"><div class="empty">Aquí aparecerán tus respuestas válidas.</div></div>
@@ -42,10 +48,27 @@
   <p class="fine" id="lexCount"></p>
  </section>
  <section class="card" id="rulesCard"><div class="side-head"><h2>Cómo se juega</h2></div>
-  <ol class="instructions"><li>Usa las <strong>3 letras verdes consecutivas</strong> en cualquier parte de tu palabra.</li><li>Intenta alcanzar <strong>20 letras</strong> como máximo.</li><li>Valen plurales, adjetivos, adverbios y verbos conjugados, infinitivos, gerundios y participios.</li><li>Puedes omitir las tildes, pero no colocarlas mal; <strong>Ñ y N no son intercambiables</strong>. No valen nombres propios ni palabras inventadas.</li><li>Completa cinco respuestas o termina antes para ver tus resultados y diez alternativas largas.</li></ol>
+  <ol class="instructions"><li>Usa las <strong>3 letras verdes consecutivas</strong> en cualquier parte de tu palabra.</li><li>Intenta alcanzar <strong>20 letras</strong> como máximo.</li><li>Valen plurales, adjetivos, adverbios y verbos conjugados, infinitivos, gerundios y participios.</li><li>Puedes omitir las tildes, pero no colocarlas mal; <strong>Ñ y N no son intercambiables</strong>. No valen nombres propios ni palabras inventadas.</li><li>Completa cinco respuestas o termina antes. Tu puntuación depende de la palabra más larga (45 %), la variedad de letras (30 %), la letras acumuladas (15 %) y completar las cinco (10 %).</li><li>Cada nueva partida propone otra raíz; nunca se repite inmediatamente, y se evitan las ya jugadas recientemente.</li></ol>
   <div class="hint-legend"><span><i class="dot"></i> Raíz</span><span><i class="dot yellow"></i> Letra nueva en tus intentos</span></div>
  </section>
- <section class="card hidden" id="resultsCard"><div class="side-head"><h2>Resultado de la ronda</h2><span class="badge">Finalizada</span></div><div class="big-result" id="bestWord"></div><div class="scoreboard"><div class="scorebox"><div class="score-number" id="bestLen">0</div><div class="score-label">Letras de tu palabra más larga</div></div><div class="scorebox"><div class="score-number" id="uniqueLen">0</div><div class="score-label">Letras diferentes utilizadas</div></div></div><p class="result-note">Clasificación: diez de las palabras más largas localizadas en las fuentes lingüísticas cargadas. No es una lista exhaustiva de la RAE.</p><div class="ranking" id="ranking"></div><button class="send" style="width:100%;margin-top:14px;padding:13px" id="againButton">Jugar otra ronda ↻</button></section>
+ <section class="card hidden" id="resultsCard">
+  <div class="side-head"><h2>Tu puntuación final</h2><span class="badge">Finalizada</span></div>
+  <div class="big-final" id="finalScore">0 <small>/ 100</small></div>
+  <div class="final-level" id="finalLevel"></div>
+  <p class="result-note" id="finalInsight"></p>
+  <div class="scoreboard">
+   <div class="scorebox"><div class="score-number" id="bestLen">0</div><div class="score-label">Letras de la más larga · <span id="longestPercent">0 %</span> del máximo de 20</div></div>
+   <div class="scorebox"><div class="score-number" id="uniqueLen">0</div><div class="score-label">Letras distintas · <span id="diversityPercent">0 %</span> del alfabeto de 27</div></div>
+   <div class="scorebox"><div class="score-number" id="totalLettersPercent">0 %</div><div class="score-label">Total de letras escritas respecto a 100 (5 × 20)</div></div>
+   <div class="scorebox"><div class="score-number" id="completionPercent">0 %</div><div class="score-label">Palabras encontradas (hasta 5)</div></div>
+  </div>
+  <p class="fine" style="margin-top:13px">Tu palabra más larga: <strong id="bestWord" style="color:var(--green)"></strong></p>
+  <div class="progress-saved" id="progressSaved"></div>
+  <hr class="separator"><h3 class="section-title">Diez alternativas largas de la raíz</h3>
+  <p class="result-note">Son palabras localizadas en el repertorio descargado, no una clasificación exhaustiva de la RAE.</p>
+  <div class="ranking" id="ranking"></div>
+  <button class="send" style="width:100%;margin-top:14px;padding:13px" id="againButton">Jugar otra ronda ↻</button>
+ </section>
 </aside>
 </div>
 <footer class="credits">Fuentes de referencia: <a href="https://dle.rae.es/" target="_blank" rel="noopener">Diccionario de la lengua española (RAE-ASALE)</a>, <a href="https://www.wordreference.com/definicion/" target="_blank" rel="noopener">WordReference</a>, <a href="https://github.com/wooorm/dictionaries" target="_blank" rel="noopener">diccionario Hunspell español</a> (GPL-3.0 / LGPL-3.0 / MPL-1.1) y <a href="https://github.com/olea/lemarios" target="_blank" rel="noopener">Lemarios de Ismael Olea</a> (dominio público). Motor nspell (MIT). Ni RAE ni WordReference proporcionan validación en tiempo real a esta aplicación. La cobertura léxica no es absoluta.</footer>
@@ -56,22 +79,140 @@
 const norm=s=>String(s||'').trim().toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300\u0301\u0308]/g,'').normalize('NFC');
 const onlyLetters=/^[a-zñ]+$/u;
 const $=id=>document.getElementById(id);
+// La lista de respaldo solo se usa si el repertorio es demasiado pequeño.
+// El repertorio real proporciona cientos de raíces adicionales con palabras comprobables.
 const ROOTS=['AÑO','ÑAD','AÑA','ÑOR','MAR','ENT','ADO','MEN','PAR','CON','EST','CIO','CUE','TRA','BLE','REA','CUM','CEN','DAD','TER','RIO','NTE','PRE','LLE','RES','BIE','TAR','CAN','ONA','EÑA','CAÑ','LAN','ERA','ITO','DES','ANA','COS','TOS','ION','ICA'];
-const SAVE_KEY='raiz_v4_state';
+const SAVE_KEY='raiz_v6_state';
+const HISTORY_KEY='raiz_v6_roots';
+const STATS_KEY='raiz_v6_stats';
+const LEGACY_KEY='raiz_v4_state';
 const blockedNames=new Set(['madrid','españa','francia','portugal','italia','alemania','paris','parís','barcelona','sevilla','toledo','roma','murcia','badajoz','mexico','méxico','argentina','extremadura','ana','maría','maria','antonio','carlos','jose','josé','lucía','lucia','manuel','don','hugo','carmen','pedro','juan','zaragoza','valencia','alicante','grecia','europa','áfrica','africa','asia','america','américa','londres','luis','josé','alejandro','marte','júpiter'].map(norm));
 let checker=null, lexicon=new Map(), properOnly=new Set(), ready=false, busy=false;
-const daySeed=()=>{const d=new Date();return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`};
-function hash(s){let h=2166136261;for(const c of s){h=Math.imul(h^c.charCodeAt(0),16777619)}return h>>>0}
-const defaultRoot=()=>ROOTS[hash(daySeed())%ROOTS.length];
-let game={root:defaultRoot(), words:[], ended:false, round:0, seed:daySeed()};
-function store(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game))}catch(e){}}
-function restore(){try{const obj=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(obj&&obj.seed===daySeed()&&ROOTS.includes(obj.root)&&Number.isSafeInteger(obj.round)&&Array.isArray(obj.words)&&obj.words.length<=5&&obj.words.every(w=>typeof w==='string'&&onlyLetters.test(norm(w))&&norm(w).length<=20&&norm(w).includes(norm(obj.root)))&&typeof obj.ended==='boolean'){game=obj}}catch(e){}}
+let rootPool=[];
+let recentRoots=[];
+let statistics={played:0,best:0,last:0,history:[]};
+let game={root:'',words:[],ended:false,round:0};
+const safeLoad=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}};
+const safeSave=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const validSaved=o=>o&&typeof o.root==='string'&&/^[A-ZÑ]{3}$/u.test(o.root)&&Number.isSafeInteger(o.round)&&o.round>=0&&Array.isArray(o.words)&&o.words.length<=5&&o.words.every(w=>typeof w==='string'&&onlyLetters.test(norm(w))&&norm(w).length<=20&&norm(w).includes(norm(o.root)))&&typeof o.ended==='boolean';
+function restore(){
+ const old=safeLoad(SAVE_KEY)||safeLoad(LEGACY_KEY);
+ const h=safeLoad(HISTORY_KEY);if(Array.isArray(h))recentRoots=h.filter(w=>typeof w==='string'&&/^[A-ZÑ]{3}$/u.test(w)).slice(-140);
+ const stats=safeLoad(STATS_KEY);
+ if(stats&&Number.isSafeInteger(stats.played)&&stats.played>=0&&Number.isFinite(stats.best))statistics={played:stats.played,best:Math.min(100,Math.max(0,stats.best)),last:Number(stats.last)||0,history:Array.isArray(stats.history)?stats.history.slice(-30):[]};
+ if(validSaved(old)){
+  game={root:old.root,words:old.words.slice(),ended:old.ended,round:old.round};
+  if(!recentRoots.includes(game.root))recentRoots.push(game.root);
+  // Conservamos solo las partidas en curso que ya contienen respuestas.
+  // Si terminó o todavía no había empezado, al abrir se elige otra raíz.
+  if(game.ended||game.words.length===0)game={root:'',words:[],ended:false,round:Math.max(0,game.round)};
+ }
+ safeSave(HISTORY_KEY,recentRoots.slice(-140));
+}
+function store(){safeSave(SAVE_KEY,game)}
+function markPlayedRoot(root){
+ if(!root)return;
+ recentRoots=recentRoots.filter(r=>r!==root);recentRoots.push(root);
+ recentRoots=recentRoots.slice(-140);safeSave(HISTORY_KEY,recentRoots);
+}
+function randomIndex(n){
+ if(n<2)return 0;
+ try{const u=new Uint32Array(1);crypto.getRandomValues(u);return u[0]%n}catch(e){return Math.floor(Math.random()*n)}
+}
+function buildRootPool(){
+ const metrics=new Map();
+ for(const [key,word] of lexicon){
+  if(key.length<5||key.length>20||blockedNames.has(key)||properOnly.has(key))continue;
+  const seen=new Set();
+  for(let i=0;i<=key.length-3;i++){
+   const triple=key.slice(i,i+3);
+   if(!/^[a-zñ]{3}$/u.test(triple)||!/[aeiou]/.test(triple)||!/[bcdfghjklmnñpqrstvwxyz]/.test(triple)||seen.has(triple))continue;
+   seen.add(triple);
+   const rec=metrics.get(triple)||{all:0,short:0,long:0};
+   rec.all++;if(key.length<=10)rec.short++;if(key.length>=12)rec.long++;
+   metrics.set(triple,rec);
+  }
+ }
+ const generated=[];
+ for(const [r,m] of metrics){
+  // Las raíces con vocabulario accesible, variedad de palabras y al menos
+  // dos alternativas largas proporcionan rondas jugables y variadas.
+  if(m.all>=32&&m.short>=7&&m.long>=2)generated.push(r.toLocaleUpperCase('es'));
+ }
+ const curated=ROOTS.filter(r=>{const m=metrics.get(norm(r));return m&&m.all>=8&&m.short>=3});
+ rootPool=[...new Set([...curated,...generated])];
+ if(rootPool.length<2)rootPool=[...ROOTS];
+}
+function selectNextRoot(){
+ const source=rootPool.length?rootPool:ROOTS;
+ const blacklist=new Set(recentRoots.slice(-Math.min(source.length-1,120)));
+ const eligible=source.filter(r=>r!==game.root&&!blacklist.has(r));
+ if(eligible.length){return eligible[randomIndex(eligible.length)]}
+ const alternate=source.filter(r=>r!==game.root);
+ return alternate.length?alternate[randomIndex(alternate.length)]:source[0];
+}
+function startNewRound(){
+ if(!ready)return;
+ const root=selectNextRoot();
+ game={root,words:[],ended:false,round:game.round+1};
+ markPlayedRoot(root);store();$('wordInput').value='';updateGame();
+ note('Nueva raíz preparada. Tienes cinco palabras para demostrar tu dominio del vocabulario.','ok');
+ $('wordInput').focus();
+}
 restore();
+// En iOS una app añadida a inicio puede regresar sin recargar la página.
+// Tras un tiempo en segundo plano, si la ronda ya terminó, abrimos otra.
+let awaySince=0;
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState==='hidden'){awaySince=Date.now();return}
+ if(document.visibilityState==='visible'&&awaySince&&Date.now()-awaySince>30000&&ready&&game.ended){
+  startNewRound();
+ }
+ awaySince=0;
+});
 function note(message,type=''){const el=$('feedback');el.className=`feedback ${type}`;el.textContent=message;$('lookup').classList.add('hidden')}
+const alphabetSize=27;
+const countUnique=words=>new Set(words.map(norm).join('')).size;
+function grade(score){
+ if(score>=90)return {name:'Virtuoso de las palabras',message:'Tu dominio de las palabras largas y la variedad de letras es excepcional.'};
+ if(score>=75)return {name:'Maestría verbal',message:'Excelente capacidad para formar palabras extensas y variadas.'};
+ if(score>=60)return {name:'Experto en formación',message:'Dominas bien las combinaciones. ¡Intenta superar tu récord personal!'};
+ if(score>=45)return {name:'Constructor de palabras',message:'Ya combinas palabras con soltura. Busca términos más largos y nuevas letras.'};
+ if(score>=30)return {name:'Aprendiz avanzado',message:'Buen progreso. Explora distintas terminaciones y familias de palabras.'};
+ if(score>=15)return {name:'Explorador del vocabulario',message:'Estás ampliando tu repertorio. Prueba palabras largas y menos repetitivas.'};
+ return {name:'Semilla de palabras',message:'Tu reto empieza aquí: encuentra más palabras y letras diferentes.'};
+}
+function calculateScore(words){
+ const lengths=words.map(w=>norm(w).length);
+ const longest=Math.max(0,...lengths);
+ const unique=countUnique(words);
+ const totalLetters=lengths.reduce((a,b)=>a+b,0);
+ const longestPercent=Math.round(longest/20*100);
+ const diversityPercent=Math.round(unique/alphabetSize*100);
+ const totalLettersPercent=totalLetters; // 5 respuestas de 20 letras = 100 letras como máximo
+ const completionPercent=Math.round(words.length/5*100);
+ const score=Math.round(0.45*longestPercent+0.30*diversityPercent+0.15*totalLettersPercent+0.10*completionPercent);
+ return {score,longest,unique,totalLetters,longestPercent,diversityPercent,totalLettersPercent,completionPercent,level:grade(score)};
+}
+function scoreAdvice(words,data){
+ if(!words.length)return 'Encuentra cinco palabras. Cuanto más largas y variadas sean sus letras, más puntos ganarás.';
+ if(data.longest<10)return `Llevas ${data.score}/100 puntos. ¡Bien! Intenta superar las 10 letras en tu próxima respuesta.`;
+ if(data.unique<15)return `Llevas ${data.score}/100 puntos. Busca una palabra con letras que todavía no hayas utilizado.`;
+ if(words.length<5)return `Llevas ${data.score}/100 puntos. Ya consigues palabras largas; completa las ${5-words.length} restantes para sumar más.`;
+ return `${data.score}/100 puntos. ${data.level.message}`;
+}
+function updateLiveScore(){
+ const d=calculateScore(game.words);
+ $('liveScore').innerHTML=`${d.score} <small>/ 100</small>`;
+ $('liveLevel').textContent=game.words.length?d.level.name:'Esperando la primera palabra…';
+ $('masteryFill').style.width=d.score+'%';
+ $('masteryTrack').setAttribute('aria-valuenow',String(d.score));
+ $('masteryTip').textContent=scoreAdvice(game.words,d);
+}
 function updateGame(){
  const root=game.root;
  $('tiles').innerHTML='';for(const l of root){const d=document.createElement('span');d.className='root-tile';d.textContent=l;$('tiles').append(d)}
- $('roundLabel').textContent=game.round?'Ronda libre':'Ronda de hoy';
+ $('roundLabel').textContent=root?`Ronda ${game.round}`:'Preparando raíz…';
  $('counter').textContent=`${game.words.length} de 5 palabras`;
  $('pips').innerHTML='';for(let i=0;i<5;i++){const d=document.createElement('span');d.className='pip'+(i<game.words.length?' on':'');$('pips').append(d)}
  $('entries').innerHTML='';if(!game.words.length){const d=document.createElement('div');d.className='empty';d.textContent='Aquí aparecerán tus respuestas válidas.';$('entries').append(d)}
@@ -82,14 +223,26 @@ function updateGame(){
  $('wordForm').classList.toggle('hidden',game.ended);
  $('resultsCard').classList.toggle('hidden',!game.ended);
  $('rulesCard').classList.toggle('hidden',game.ended);
+ updateLiveScore();
  if(game.ended)renderResults();
 }
-const countUnique=words=>new Set(words.map(norm).join('')).size;
 function renderResults(){
  const sorted=[...game.words].sort((a,b)=>norm(b).length-norm(a).length);
  $('bestWord').textContent=sorted.length?sorted[0].toLocaleLowerCase('es'):'Sin palabras';
  $('bestLen').textContent=sorted.length?norm(sorted[0]).length:'0';
  $('uniqueLen').textContent=countUnique(game.words);
+ const d=calculateScore(game.words);
+ $('finalScore').innerHTML=`${d.score} <small>/ 100 puntos</small>`;
+ $('finalLevel').textContent=d.level.name;
+ $('finalInsight').textContent=d.level.message;
+ $('longestPercent').textContent=d.longestPercent+' %';
+ $('diversityPercent').textContent=d.diversityPercent+' %';
+ $('totalLettersPercent').textContent=d.totalLettersPercent+' %';
+ $('completionPercent').textContent=d.completionPercent+' %';
+ const recent=statistics.history.slice(-5);
+ const previous=statistics.history.length>1?statistics.history[statistics.history.length-2].score:null;
+ const difference=previous===null?'':d.score>previous?`<div>↗ Has mejorado <strong>${d.score-previous} puntos</strong> respecto a la partida anterior.</div>`:d.score<previous?`<div>Esta vez has conseguido <strong>${previous-d.score} puntos menos</strong> que en la anterior. ¡Vuelve a intentarlo!</div>`:'<div>Has igualado la puntuación de tu partida anterior.</div>';
+ $('progressSaved').innerHTML=`Partidas completadas: <strong>${statistics.played}</strong> · Récord personal: <strong>${statistics.best}/100</strong> · Última puntuación: <strong>${statistics.last}/100</strong>${difference}<div>Últimas puntuaciones: ${recent.map(v=>`<strong>${Math.round(v.score)}/100</strong>`).join(' · ')}</div>`;
  const r=$('ranking');r.innerHTML='';
  const root=norm(game.root),used=new Set(game.words.map(norm));let top=[];
  function better(a,b){return b.length-a.length||a.localeCompare(b,'es')}
@@ -98,8 +251,24 @@ function renderResults(){
  if(!top.length){const p=document.createElement('p');p.className='loading-copy';p.textContent='No hay suficientes alternativas en el repertorio cargado para esta raíz.';r.append(p)}
  top.forEach((w,i)=>{const el=document.createElement('div');el.className='rank-item';const n=document.createElement('span');n.className='rank-num';n.textContent=`${i+1}.`;const name=document.createElement('span');name.className='rank-word';name.textContent=w;const size=document.createElement('span');size.className='rank-length';size.textContent=`${norm(w).length} letras`;el.append(n,name,size);r.append(el)})
 }
-function endGame(){if(!ready||game.ended||!game.words.length)return;game.ended=true;store();updateGame();note('Ronda completada. Mira el ranking y tus resultados.','ok')}
-function newGame(){const old=game.root;let newR=old;for(let k=0;k<20&&newR===old;k++)newR=ROOTS[Math.floor(Math.random()*ROOTS.length)];game={root:newR,words:[],ended:false,round:game.round+1,seed:daySeed()};$('wordInput').value='';store();updateGame();note(ready?'Nueva raíz preparada. ¡A jugar!':'Nueva raíz lista. Espera a que se cargue el diccionario.');if(ready)$('wordInput').focus()}
+function endGame(){
+ if(!ready||game.ended||!game.words.length)return;
+ game.ended=true;
+ const result=calculateScore(game.words);
+ statistics.played++;
+ statistics.last=result.score;
+ statistics.best=Math.max(statistics.best,result.score);
+ statistics.history.push({root:game.root,score:result.score,words:game.words.length,date:new Date().toISOString()});
+ statistics.history=statistics.history.slice(-30);
+ safeSave(STATS_KEY,statistics);
+ store();updateGame();
+ note(`¡Partida evaluada! ${result.score} de 100 puntos. ${result.level.name}. Mira tus porcentajes y las alternativas.`, 'ok');
+}
+function newGame(){
+ // Conservar la partida solo hasta que se confirme su abandono.
+ if(!ready){note('Espera a que termine de cargarse el diccionario para recibir una nueva raíz.');return}
+ startNewRound();
+}
 function accentVariants(w){
  // El español estándar requiere, en general, una única tilde ortográfica;
  // aquí reconstruimos la vocal acentuada para admitir su omisión.
@@ -132,7 +301,7 @@ function checkWord(raw){const key=norm(raw),root=norm(game.root);
 }
 $('wordForm').addEventListener('submit',e=>{e.preventDefault();if(!ready||game.ended||busy)return;
  const input=$('wordInput'),word=input.value.trim();const error=checkWord(word);if(error){note(error,'err');if(error.startsWith('No hemos podido confirmar')){const search=encodeURIComponent(word.toLocaleLowerCase('es'));$('lookupRae').href='https://dle.rae.es/'+search;$('lookupWr').href='https://www.wordreference.com/definicion/'+search;$('lookup').classList.remove('hidden')}input.focus();return}
- game.words.push(word.toLocaleLowerCase('es'));input.value='';store();updateGame();if(game.words.length===5){endGame()}else{note(`¡Aceptada! ${game.words.length} de 5. Busca otra palabra más larga.`,'ok');input.focus()}
+ game.words.push(word.toLocaleLowerCase('es'));input.value='';store();updateGame();if(game.words.length===5){endGame()}else{const d=calculateScore(game.words);note(`¡Aceptada! ${d.score}/100 puntos · ${d.level.name}. Llevas ${game.words.length} de 5.`, 'ok');input.focus()}
 });
 $('finishButton').addEventListener('click',()=>{if(game.words.length&&confirm('¿Terminar ahora y ver el ranking de palabras?'))endGame()});
 for(const id of ['newTop','resetButton','againButton'])$(id).addEventListener('click',()=>{if(game.words.length&&!game.ended&&!confirm('¿Empezar otra ronda? Perderás los intentos de la actual.'))return;newGame()});
@@ -172,9 +341,10 @@ async function loadDictionary(){if(busy||ready)return;busy=true;$('retryButton')
   const only=new Set();for(const c of caps){if(!map.has(c))only.add(c)};
   // Además de la lista cerrada, los nombres exclusivos del corrector se excluyen.
   // Evita bloquear 'mar', 'sol', etc. que también son sustantivos comunes.
-  checker=spell;lexicon=map;properOnly=only;ready=true;
-  $('lexBadge').textContent='● Preparado';$('lexCount').textContent=`${new Intl.NumberFormat('es-ES').format(map.size)} formas y lemas indexados · incluye reglas morfológicas adicionales.`;
-  status('Diccionario cargado. Ya puedes jugar.',100);$('statusBox').querySelector('.spin').outerHTML='<span class="status-check">✓</span>';
+  checker=spell;lexicon=map;properOnly=only;buildRootPool();ready=true;
+  if(!game.root){startNewRound()}else{markPlayedRoot(game.root)}
+  $('lexBadge').textContent='● Preparado';$('lexCount').textContent=`${new Intl.NumberFormat('es-ES').format(map.size)} formas y lemas indexados · ${rootPool.length} raíces jugables generadas · incluye reglas morfológicas adicionales.`;
+  status('Diccionario cargado. Ya puedes jugar.',100);const spinner=$('statusBox').querySelector('.spin');if(spinner)spinner.outerHTML='<span class="status-check">✓</span>';
   $('loaderBar').classList.add('hidden');busy=false;updateGame();note(game.ended?'Partida terminada. Puedes iniciar otra ronda.':'Diccionario preparado. Escribe tu primera palabra.','ok');
  }catch(err){busy=false;ready=false;console.error('Error cargando fuentes',err);$('lexBadge').textContent='No disponible';status('No se han podido cargar los recursos. Conecta a Internet, abre el juego desde una web HTTPS y pulsa «Reintentar».',5,true);$('retryButton').classList.remove('hidden');$('loaderBar').classList.add('hidden');note('Necesitas conexión para la primera carga del diccionario. No aceptaré palabras sin poder verificarlas.','err');updateGame()}
 }
