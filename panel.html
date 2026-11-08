@@ -120,6 +120,17 @@ label{display:block;font-size:12px;color:var(--muted);font-weight:600;margin:14p
    <section class="panel"><div class="eyebrow">Sistema</div><h2>Sistemas y navegadores</h2><div class="bars" id="systems"></div><div style="height:14px"></div><div class="bars" id="browsers"></div></section>
   </div>
  </div>
+ <section class="panel" style="margin-top:14px" id="alerts">
+  <div class="eyebrow">Avisos en el móvil</div><h2>Que te avise cuando alguien entre</h2>
+  <p class="small" style="font-size:13px">Cada vez que alguien abre una de tus webs recibes una notificación (como mucho una por persona, web y día). Para recibirlas:</p>
+  <ol class="small" style="font-size:13px;padding-left:20px;line-height:1.7">
+   <li>Instala la app gratuita <b>ntfy</b> (App Store o Google Play).</li>
+   <li>Ábrela, pulsa <b>+</b> y suscríbete al tema:<br><code id="topicName" style="display:inline-block;margin-top:6px;padding:7px 10px;border-radius:9px;background:#0a0724;border:1px solid var(--line);color:var(--gold);font-size:14px;user-select:all">quique-webs-x8ylgigpkcn3</code> <button class="chip" type="button" id="copyTopic">Copiar</button></li>
+   <li>Pulsa aquí para comprobar que te llega: <button class="chip" type="button" id="testAlert">🔔 Enviar aviso de prueba</button> <span id="testMsg" class="small"></span></li>
+  </ol>
+  <label style="display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13px;color:#fff;cursor:pointer"><input type="checkbox" id="mineToggle" style="width:20px;height:20px;margin:0;accent-color:#ffcc33;flex:none"><span>Este dispositivo es mío: <b>no contar mis visitas ni avisarme de ellas</b>.<br><span class="small">Márcalo en cada móvil u ordenador desde el que juegues tú.</span></span></label>
+  <p class="small" style="margin-top:10px">El nombre del tema funciona como una contraseña: no lo compartas, o cualquiera podría leer o enviar avisos a ese canal.</p>
+ </section>
  <p class="foot">Datos anónimos de GoatCounter. La clave de API solo se guarda en este navegador.<br>Tus propias visitas también cuentan, salvo que las ignores en los ajustes de GoatCounter.</p>
 </div>
 </div>
@@ -226,6 +237,11 @@ $('ranges').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c
 $('refreshBtn').addEventListener('click',load);
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(lastChart)lineChart($('chart'),lastChart)},200)});
 $('logoutBtn').addEventListener('click',()=>{if(!confirm('¿Olvidar la clave de API en este navegador? Podrás volver a introducirla.'))return;store.del('gcp-token');try{sessionStorage.removeItem('gcp-token')}catch{}cfg.token='';$('tokenInput').value='';show()});
+const TOPIC='quique-webs-x8ylgigpkcn3';
+try{$('mineToggle').checked=localStorage.getItem('skipgc')==='t'}catch{}
+$('mineToggle').addEventListener('change',e=>{try{if(e.target.checked)localStorage.setItem('skipgc','t');else localStorage.removeItem('skipgc')}catch{}});
+$('copyTopic').addEventListener('click',()=>{navigator.clipboard?.writeText(TOPIC).then(()=>{$('copyTopic').textContent='✓ Copiado';setTimeout(()=>$('copyTopic').textContent='Copiar',1400)}).catch(()=>{})});
+$('testAlert').addEventListener('click',async()=>{$('testMsg').textContent='Enviando…';try{const r=await fetch('https://ntfy.sh/',{method:'POST',body:JSON.stringify({topic:TOPIC,title:'🔔 Aviso de prueba',message:'Si ves esto, los avisos de tus webs funcionan.',click:location.href})});$('testMsg').textContent=r.ok?'✓ Enviado. Mira tu móvil.':'No se ha podido enviar ('+r.status+').'}catch{$('testMsg').textContent='No se ha podido conectar con ntfy.'}});
 show();
 </script>
 </body>
