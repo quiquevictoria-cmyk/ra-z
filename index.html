@@ -16,6 +16,8 @@
 @media(prefers-reduced-motion:reduce){.spin{animation:none}}
 .live-card{border:1px solid #355b4e;background:linear-gradient(115deg,#17382e,#162b2c);border-radius:14px;padding:15px;margin:13px 0 9px}.live-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.micro-label{font-size:9px;font-weight:900;letter-spacing:1.2px;color:#a7cbb9}.live-level{font-weight:850;font-size:16px;margin-top:5px;color:#f0f9f2}.live-score{color:var(--green);font-size:30px;font-weight:1000;letter-spacing:-1px;white-space:nowrap}.live-score small,.big-final small{font-size:13px;color:var(--muted);font-weight:600}.mastery-track{height:9px;background:#334844;border-radius:30px;overflow:hidden;margin:12px 0 9px}.mastery-track>div{height:100%;background:linear-gradient(90deg,#45ae83,#6ef0ad);width:0%;border-radius:30px;transition:width .3s}.live-tip{font-size:12px;color:#b6d5c7;margin:0;line-height:1.5}.big-final{font-size:47px;line-height:1.1;font-weight:950;letter-spacing:-2px;color:var(--green)}.big-final small{font-size:17px;letter-spacing:0}.final-level{font-weight:850;font-size:18px;margin:7px 0 9px}.progress-saved{margin-top:13px;padding:11px 12px;background:#112525;border:1px solid #2a5745;border-radius:11px;font-size:12px;color:#bde2d1;line-height:1.7}.progress-saved strong{color:#fff}.scorebox .score-number{font-size:22px}.section-title{margin:9px 0 5px}
 </style>
+<script>window.track=function(n,t){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:n,title:t||n,event:true})}catch(e){}};</script>
+<script data-goatcounter="https://quiquevictoria.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -71,7 +73,7 @@
  </section>
 </aside>
 </div>
-<footer class="credits">Fuentes de referencia: <a href="https://dle.rae.es/" target="_blank" rel="noopener">Diccionario de la lengua española (RAE-ASALE)</a>, <a href="https://www.wordreference.com/definicion/" target="_blank" rel="noopener">WordReference</a>, <a href="https://github.com/wooorm/dictionaries" target="_blank" rel="noopener">diccionario Hunspell español</a> (GPL-3.0 / LGPL-3.0 / MPL-1.1) y <a href="https://github.com/olea/lemarios" target="_blank" rel="noopener">Lemarios de Ismael Olea</a> (dominio público). Motor nspell (MIT). Ni RAE ni WordReference proporcionan validación en tiempo real a esta aplicación. La cobertura léxica no es absoluta.</footer>
+<footer class="credits">Fuentes de referencia: <a href="https://dle.rae.es/" target="_blank" rel="noopener">Diccionario de la lengua española (RAE-ASALE)</a>, <a href="https://www.wordreference.com/definicion/" target="_blank" rel="noopener">WordReference</a>, <a href="https://github.com/wooorm/dictionaries" target="_blank" rel="noopener">diccionario Hunspell español</a> (GPL-3.0 / LGPL-3.0 / MPL-1.1) y <a href="https://github.com/olea/lemarios" target="_blank" rel="noopener">Lemarios de Ismael Olea</a> (dominio público). Motor nspell (MIT). Ni RAE ni WordReference proporcionan validación en tiempo real a esta aplicación. La cobertura léxica no es absoluta.<br><small>Se cuentan las visitas de forma anónima, sin cookies, con <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a>.</small></footer>
 </div>
 <script type="module">
 'use strict';
@@ -151,7 +153,7 @@ function selectNextRoot(){
  const alternate=source.filter(r=>r!==game.root);
  return alternate.length?alternate[randomIndex(alternate.length)]:source[0];
 }
-function startNewRound(){
+function startNewRound(){track("raiz-ronda","RAÍZ: ronda empezada");
  if(!ready)return;
  const root=selectNextRoot();
  game={root,words:[],ended:false,round:game.round+1};
@@ -251,7 +253,7 @@ function renderResults(){
  if(!top.length){const p=document.createElement('p');p.className='loading-copy';p.textContent='No hay suficientes alternativas en el repertorio cargado para esta raíz.';r.append(p)}
  top.forEach((w,i)=>{const el=document.createElement('div');el.className='rank-item';const n=document.createElement('span');n.className='rank-num';n.textContent=`${i+1}.`;const name=document.createElement('span');name.className='rank-word';name.textContent=w;const size=document.createElement('span');size.className='rank-length';size.textContent=`${norm(w).length} letras`;el.append(n,name,size);r.append(el)})
 }
-function endGame(){
+function endGame(){track("raiz-fin","RAÍZ: partida terminada");
  if(!ready||game.ended||!game.words.length)return;
  game.ended=true;
  const result=calculateScore(game.words);
