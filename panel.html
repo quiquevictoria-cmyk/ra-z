@@ -151,15 +151,17 @@ const SHARE_KEYS=['letras-compartir','wordle-compartir'];
 function pct(a,b){return b?Math.round((a||0)/b*100)+' %':'—'}
 
 function range(){const end=new Date();end.setMinutes(0,0,0);end.setHours(end.getHours()+1);const start=new Date();start.setHours(0,0,0,0);start.setDate(start.getDate()-(days-1));return {start:start.toISOString().replace(/\.\d{3}Z$/,'Z'),end:end.toISOString().replace(/\.\d{3}Z$/,'Z')}}
-async function api(path,params={}){const url=new URL(`https://${cfg.site}.goatcounter.com/api/v0/${path}`);for(const[k,v]of Object.entries(params))url.searchParams.set(k,v);
- let res;try{res=await fetch(url,{headers:{Authorization:'Bearer '+cfg.token,'Content-Type':'application/json'}})}catch(e){throw Error('No se ha podido conectar con GoatCounter. Revisa la conexión o si un bloqueador de anuncios está frenando goatcounter.com.')}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function api(path,params={},tries=4){const url=new URL(`https://${cfg.site}.goatcounter.com/api/v0/${path}`);for(const[k,v]of Object.entries(params))url.searchParams.set(k,v);
+ let res;for(let t=0;t<tries;t++){try{res=await fetch(url,{headers:{Authorization:'Bearer '+cfg.token}});if(res.status!==429)break}catch(e){res=null}if(t<tries-1){$('status').textContent='GoatCounter pide calma, reintentando…';await sleep(1500*(t+1)*(t+1))}}
+ if(!res)throw Error('No se ha podido conectar con GoatCounter. Revisa la conexión o si un bloqueador de contenido de Safari está frenando goatcounter.com, y pulsa ↻.');
  if(res.status===401)throw Error('La clave de API no es válida. Pulsa ⚙︎ y vuelve a introducirla.');
  if(res.status===403)throw Error('La clave no tiene permiso de lectura. Crea una nueva marcando «Read statistics».');
  if(res.status===404)throw Error(`No existe el panel «${cfg.site}» en GoatCounter. Pulsa ⚙︎ y revisa el nombre.`);
  if(res.status===429)throw Error('GoatCounter pide esperar un momento (demasiadas consultas). Prueba de nuevo en un minuto.');
  if(!res.ok)throw Error('GoatCounter ha respondido con un error ('+res.status+').');return res.json()}
 
-function bars(el,items,label=x=>x.name,max){el.innerHTML='';const list=(items||[]).filter(x=>x.count>0);if(!list.length){el.innerHTML='<div class="empty">Sin datos en este periodo</div>';return}const top=max||Math.max(...list.map(x=>x.count));const total=list.reduce((s,x)=>s+x.count,0);
+function bars(el,items,label=x=>x.name,max){el.innerHTML='';const list=(items||[]).filter(x=>x.count>0);if(!list.length){el.innerHTML='<div class="empty">'+(items&&items.failed?'No se ha podido cargar. Pulsa ↻ para reintentar.':'Sin datos en este periodo')+'</div>';return}const top=max||Math.max(...list.map(x=>x.count));const total=list.reduce((s,x)=>s+x.count,0);
  for(const it of list.slice(0,8)){const d=document.createElement('div');d.className='bar';const lab=document.createElement('div');lab.className='lab';const s=document.createElement('span');s.textContent=label(it);const b=document.createElement('b');b.textContent=`${fmt(it.count)} · ${Math.round(it.count/total*100)} %`;lab.append(s,b);const tr=document.createElement('div');tr.className='track';const f=document.createElement('div');f.className='fill';f.style.width=Math.max(3,it.count/top*100)+'%';tr.append(f);d.append(lab,tr);el.append(d)}}
 let regionNames=null;try{regionNames=new Intl.DisplayNames(['es'],{type:'region'})}catch{}
 const country=x=>{const c=String(x.id||'').slice(0,2).toUpperCase();try{if(regionNames&&/^[A-Z]{2}$/.test(c))return regionNames.of(c)}catch{}return x.name||'Desconocido'};
@@ -180,9 +182,12 @@ function lineChart(el,points){lastChart=points;el.innerHTML='';if(!points.length
 function spark(stats){const v=(stats||[]).map(s=>s.daily||0);if(v.length<2||!v.some(Boolean))return '';const m=Math.max(...v),W=200,H=44;const pts=v.map((n,i)=>`${i*W/(v.length-1)},${H-3-(H-6)*n/m}`).join(' ');return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="#35e1ff" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`}
 const dayLabel=(s,long)=>{const d=new Date(s+'T12:00:00');return d.toLocaleDateString('es-ES',long?{weekday:'short',day:'numeric',month:'short'}:{day:'numeric',month:'short'})};
 
-async function load(){$('dashMsg').className='msg';$('content').classList.add('loading');$('status').textContent='Actualizando…';const r=range();
- try{const [total,hits,refs,locs,sizes,systems,browsers]=await Promise.all([
-   api('stats/total',r),api('stats/hits',{...r,daily:'true',limit:'100'}),api('stats/toprefs',{...r,limit:'10'}),api('stats/locations',{...r,limit:'10'}),api('stats/sizes',r),api('stats/systems',{...r,limit:'6'}),api('stats/browsers',{...r,limit:'6'})]);
+let loading=false;
+async function load(){if(loading)return;loading=true;$('dashMsg').className='msg';$('content').classList.add('loading');$('status').textContent='Actualizando…';const r=range();
+ try{const total=await api('stats/total',r);
+  const extra=async(path,params)=>{await sleep(350);try{return await api(path,params,3)}catch(e){console.warn(path,e);return {stats:[],hits:[],failed:true}}};
+  const hits=await extra('stats/hits',{...r,daily:'true',limit:'100'});
+  const refs=await extra('stats/toprefs',{...r,limit:'10'}),locs=await extra('stats/locations',{...r,limit:'10'}),sizes=await extra('stats/sizes',r),systems=await extra('stats/systems',{...r,limit:'6'}),browsers=await extra('stats/browsers',{...r,limit:'6'});
   const list=hits.hits||[];const pages=list.filter(h=>!h.event),events={};
   for(const h of list.filter(h=>h.event)){const k=String(h.path).replace(/^\//,'');events[k]=(events[k]||0)+(h.count||0)}
   const visits=total.total||0;const rounds=GAMES.reduce((s,g)=>s+g.rounds(events),0);const shares=SHARE_KEYS.reduce((s,k)=>s+(events[k]||0),0);
@@ -197,10 +202,11 @@ async function load(){$('dashMsg').className='msg';$('content').classList.add('l
    for(const [k,lab] of g.events){const d=document.createElement('div');d.className='row';d.innerHTML='<span></span><b></b>';d.firstChild.textContent=lab;d.lastChild.textContent=fmt(events[k]||0);rows.append(d)}
    for(const [lab,val] of g.derived(events)){const d=document.createElement('div');d.className='row derived';d.innerHTML='<span></span><b></b>';d.firstChild.textContent=lab;d.lastChild.textContent=val;rows.append(d)}
    box.append(sec)}
-  bars($('refs'),refs.stats,refName);bars($('locs'),locs.stats,x=>flag(x.id)+country(x));bars($('sizes'),sizes.stats,sizeName);bars($('systems'),systems.stats,x=>x.name||'Desconocido');bars($('browsers'),browsers.stats,x=>x.name||'Desconocido');
+  bars($('refs'),Object.assign(refs.stats||[],{failed:refs.failed}),refName);bars($('locs'),Object.assign(locs.stats||[],{failed:locs.failed}),x=>flag(x.id)+country(x));bars($('sizes'),Object.assign(sizes.stats||[],{failed:sizes.failed}),sizeName);bars($('systems'),Object.assign(systems.stats||[],{failed:systems.failed}),x=>x.name||'Desconocido');bars($('browsers'),Object.assign(browsers.stats||[],{failed:browsers.failed}),x=>x.name||'Desconocido');
+  const failedN=[hits,refs,locs,sizes,systems,browsers].filter(x=>x.failed).length;if(failedN){$('dashMsg').textContent=`${failedN} bloque${failedN===1?'':'s'} no se ${failedN===1?'ha':'han'} podido cargar${hits.failed?' (incluidos los datos por juego)':''}. Pulsa ↻ para reintentar.`;$('dashMsg').className='msg err'}
   $('status').textContent=`Actualizado a las ${new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})} · ${days===1?'hoy':'últimos '+days+' días'} · ${fmt(total.total_events||0)} eventos de juego`;
  }catch(e){$('dashMsg').textContent=e.message;$('dashMsg').className='msg err';$('status').textContent='No se han podido cargar los datos.'}
- finally{$('content').classList.remove('loading')}}
+ finally{$('content').classList.remove('loading');loading=false}}
 
 function show(){const logged=!!cfg.token;$('loginCard').classList.toggle('hidden',logged);$('dash').classList.toggle('hidden',!logged);if(logged){$('siteLabel').textContent=cfg.site+'.goatcounter.com';document.querySelectorAll('#ranges .chip').forEach(c=>c.classList.toggle('on',Number(c.dataset.days)===days));load()}else{$('siteInput').value=cfg.site;$('tokenInput').focus()}}
 $('loginForm').addEventListener('submit',async e=>{e.preventDefault();const site=$('siteInput').value.trim().toLowerCase().replace(/^https?:\/\//,'').replace(/\.goatcounter\.com.*$/,'').replace(/[^a-z0-9-]/g,'');$('siteInput').value=site;const token=$('tokenInput').value.trim();$('loginMsg').className='msg';
