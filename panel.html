@@ -129,7 +129,7 @@ label{display:block;font-size:12px;color:var(--muted);font-weight:600;margin:14p
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch{return d}},set(k,v){try{localStorage.setItem(k,v)}catch{}},del(k){try{localStorage.removeItem(k)}catch{}}};
 const fmt=n=>new Intl.NumberFormat('es-ES').format(n||0);
-let cfg={site:store.get('gcp-site','quiquevictoria'),token:store.get('gcp-token','')||sessionToken()};
+let cfg={site:String(store.get('gcp-site','quiquevictoria')).toLowerCase().replace(/[^a-z0-9-]/g,'')||'quiquevictoria',token:store.get('gcp-token','')||sessionToken()};
 let days=Number(store.get('gcp-days','7'))||7;
 function sessionToken(){try{return sessionStorage.getItem('gcp-token')||''}catch{return ''}}
 
@@ -203,7 +203,7 @@ async function load(){$('dashMsg').className='msg';$('content').classList.add('l
  finally{$('content').classList.remove('loading')}}
 
 function show(){const logged=!!cfg.token;$('loginCard').classList.toggle('hidden',logged);$('dash').classList.toggle('hidden',!logged);if(logged){$('siteLabel').textContent=cfg.site+'.goatcounter.com';document.querySelectorAll('#ranges .chip').forEach(c=>c.classList.toggle('on',Number(c.dataset.days)===days));load()}else{$('siteInput').value=cfg.site;$('tokenInput').focus()}}
-$('loginForm').addEventListener('submit',async e=>{e.preventDefault();const site=$('siteInput').value.trim().toLowerCase().replace(/^https?:\/\//,'').replace(/\.goatcounter\.com.*$/,'');const token=$('tokenInput').value.trim();$('loginMsg').className='msg';
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();const site=$('siteInput').value.trim().toLowerCase().replace(/^https?:\/\//,'').replace(/\.goatcounter\.com.*$/,'').replace(/[^a-z0-9-]/g,'');$('siteInput').value=site;const token=$('tokenInput').value.trim();$('loginMsg').className='msg';
  if(!site||!token){$('loginMsg').textContent='Escribe el nombre del panel y la clave.';$('loginMsg').className='msg err';return}
  cfg={site,token};try{await api('stats/total',range())}catch(err){$('loginMsg').textContent=err.message;$('loginMsg').className='msg err';cfg.token='';return}
  store.set('gcp-site',site);store.set('gcp-token',token);try{sessionStorage.setItem('gcp-token',token)}catch{}show()});
